@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+class pattern {
+    public static void main (String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int i, j, k;
+        for (i = 1; i <= n; i++) {
+            for (k = 1; k <= i; k++) {  // Corrected the loop condition to properly print spaces
+                System.out.print(" ");  // Print a space for alignment
+            }
+            for (j = n; j >= 1; j--) {
+                System.out.print("*");
+            }
+            System.out.println();  // Move to the next line after each row
+        }
+    }
+}
+//
+ *****
+  *****
+   *****
+    *****
+     *****
