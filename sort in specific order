@@ -1,0 +1,50 @@
+Sort in specific order
+Difficulty: EasyAccuracy: 52.55%Submissions: 42K+Points: 2
+Given an array arr[] of positive integers. Your task is to sort them so that the first part of the array contains odd numbers sorted in descending order, and the rest of the portion contains even numbers sorted in ascending order.
+
+Examples:
+
+Input: arr[] = [1, 2, 3, 5, 4, 7, 10]
+Output: [7, 5, 3, 1, 2, 4, 10]
+Explanation: 7 5 3 1 are odds in descending order and 2 4 10 are evens in ascending order
+//java 
+class Solution {
+
+    public void sortIt(Long arr[]) {
+        // code here.
+        List<Long> odd = new ArrayList<>();
+        List<Long> even = new ArrayList<>();
+
+        for (Long num : arr) {
+            if (num % 2 != 0) {
+                odd.add(num);  // Odd numbers go to the 'odd' list
+            } else {
+                even.add(num);  // Even numbers go to the 'even' list
+            }
+        }
+
+        // Sort odd numbers in descending order and even numbers in ascending order
+        Collections.sort(odd, Collections.reverseOrder());
+        Collections.sort(even);
+
+        // Combine the lists
+        odd.addAll(even);
+
+        // Convert the list back to array and update arr
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = odd.get(i);  // Populate arr with the sorted odd and even numbers
+        }
+    }
+}  
+
+// python
+class Solution:
+    def sortIt(self, arr):
+        #code here.
+        odd=[x for x in arr if x%2!=0]
+        even=[x for x in arr if x%2==0]
+        
+        odd.sort(reverse=True)
+        even.sort()
+        arr[:]= odd+even
+    
